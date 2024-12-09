@@ -1,6 +1,7 @@
 <!--demo1-->
 <label for="name">Nom :</label>
 <input id="name" type="text" [(ngModel)]="name">
+<button (click)="addUser()">Ajouter</button>
 <button (click)="resetName()">Reset</button>
 
 
@@ -10,12 +11,39 @@
   Bienvenue <span [ngClass]="name == 'Michel' ? 'red' : 'green'">{{ name }}</span>
 </div>
 
-
-
 <!--méthode  utilisable depuis la version >= 17-->
-@if (name && name.trim().length > 0){
-  <div>Bienvenue {{ name }}</div>
+@if (name && name.trim().length > 0) {
+  <div>Bienvenue <span [ngClass]="{ 'red' : name == 'Michel', 'green' : name !== 'Michel' }">{{ name }}</span></div>
 }
+
+<ul>
+  <li *ngFor="let user of users"> {{ user }}
+    <button (click)="removeUser(user)">Delete</button>
+  </li>
+</ul>
+
+<ul>
+  @for (user of users; track $index) {
+    <li>{{ user }} / {{ $index }}
+      <button (click)="removeUser2($index)">Delete</button>
+    </li>
+  }
+</ul>
+
+<div>
+  Date => {{ date | date : 'yy/Mm/yyyy' }}
+  Date => {{ date | date : 'long' : undefined : 'fr-FR' }}
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
 
