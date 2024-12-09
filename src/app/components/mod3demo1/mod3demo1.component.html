@@ -1,0 +1,28 @@
+<!--demo1-->
+<label for="name">Nom :</label>
+<input id="name" type="text" [(ngModel)]="name">
+<button (click)="resetName()">Reset</button>
+
+
+<!--demo2-->
+<!--ancienne méthode toujours d'acutalités-->
+<div *ngIf="name && name.trim().length > 0">
+  Bienvenue <span [ngClass]="name == 'Michel' ? 'red' : 'green'">{{ name }}</span>
+</div>
+
+
+
+<!--méthode  utilisable depuis la version >= 17-->
+@if (name && name.trim().length > 0){
+  <div>Bienvenue {{ name }}</div>
+}
+
+
+
+
+
+
+
+
+
+
