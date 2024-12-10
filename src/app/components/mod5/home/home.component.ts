@@ -18,6 +18,10 @@ export class HomeComponent {
   goToAbout() {
     this.router.navigate(['/about-us'])
   }
+
+  goToDetail(id: number) {
+    this.router.navigate(['/detail', id])
+  }
 }
 
 
