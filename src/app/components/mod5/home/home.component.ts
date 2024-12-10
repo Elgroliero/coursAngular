@@ -16,6 +16,16 @@ export class HomeComponent {
   }
 
   goToAbout() {
-    this.router.navigate(['/about-us']);
+    this.router.navigate(['/about-us'])
   }
 }
+
+
+
+
+
+
+
+
+
+
