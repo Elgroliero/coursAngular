@@ -2,5 +2,8 @@
 
 <a routerLink="/about-us">About</a>
 <br>
+<a [routerLink]="['/detail', 789]">Détail de qqch</a>
+<br>
 <div routerLink="/about-us">About</div>
 <button (click)="goToAbout()" >Go to about us !</button>
+<button (click)="goToDetail(123)" >Go to detail !</button>
