@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {Mod4demo1Service} from "../../services/mod4demo1.service";
 import {NgIf} from "@angular/common";
 
@@ -15,19 +15,23 @@ export class Mod4demo1Component {
 
   public user? : any
 
-  constructor(private authService: Mod4demo1Service) {
+  constructor(private authService : Mod4demo1Service) {
   }
 
-  ngOnInit() {
-    this.user = this.authService.getUser();
-  } //connecté ou non
-
-  public login() {
-    this.user = this.authService.login();
+  ngOnInit(){
+    this.user = this.authService.getUser()
   }
 
-  public logout() {
-    this.authService.logout();
-    this.user = this.authService.getUser();
+  public login(){
+    this.user = this.authService.login()
   }
+
+  public logout(){
+    this.authService.logout()
+    this.user = this.authService.getUser()
+  }
+
+
+
+
 }

@@ -10,19 +10,20 @@ export class Mod4demo1Service {
 
   public login() {
     const user = {'name': 'Michel'};
-    localStorage.setItem('user', JSON.stringify(user));
-    return user;
+    localStorage.setItem('user', JSON.stringify(user))
+    return user
   }
 
   public getUser() {
     let user = localStorage.getItem('user');
     if (user) {
-      return JSON.parse(user);
+      return JSON.parse(user)
     }
-    return null;
+    return null
   }
 
-  public logout() {
-    localStorage.removeItem('user');
+  public logout(){
+    localStorage.removeItem('user')
   }
+
 }
