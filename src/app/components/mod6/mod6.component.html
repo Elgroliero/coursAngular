@@ -1,23 +1,45 @@
-<section><form action="">
-  <label for="email">Adresse Mail:</label>
-  <input id="email" name="email" type="email"><br>
-  <label for="password">Mot de passe :</label>
-  <input id="password" name="password" type="password"><br>
-  <label for="birthdate">Date de naissance :</label>
-  <input id="birthdate" name="birthdate" type="date"><br>
-  <label for="newsletter">
-    <input id="newsletter" name="newsletter" type="checkbox">
-    Je souhaite recevoir la newsletter
-  </label>
-  <br>
-  <label for="job">Métier :</label>
-  <select name="job" id="job">
-    <option value="dev">Développeur Web</option>
-    <option value="design">Designer</option>
-  </select>
-  <br>
-  <label for="knowledge">Connaissez-vous Angular ?</label>
-  <input id="knowledge" name="knowledge" min="1" max="10" type="range"><br>
-  <input type="submit" value="Envoyer">
-</form>
+<section>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <label for="email">Adresse Mail:</label>
+    <input id="email" name="email" type="email" formControlName="email"><br>
+    <div *ngIf="form.get('email')?.hasError('required')" class="error">Le mail est obligatoire</div>
+    <div *ngIf="form.get('email')?.errors?.['email']" class="error">Le format du mail est incorrect</div>
+
+
+    <label for="password">Mot de passe :</label>
+    <input id="password" name="password" type="password" formControlName="password"><br>
+    <div *ngIf="form.get('password')?.hasError('required')" class="error">Le mot de passe est obligatoire</div>
+    <div *ngIf="form.get('password')?.errors?.['minlength']" class="error">Le mot de passe doit comporter au moins 6
+      caractères
+    </div>
+
+
+    <label for="birthdate">Date de naissance :</label>
+    <input id="birthdate" name="birthdate" type="date" formControlName="birthdate"><br>
+    <div *ngIf="form.get('birthdate')?.errors?.['required']" class="error">La date de naissance est obligatoire</div>
+    <div *ngIf="form.get('birthdate')?.hasError('greaterThan')" class="error">Tu te fous de ma gueule ?</div>
+
+
+    <label for="newsletter">
+      <input id="newsletter" name="newsletter" type="checkbox" formControlName="newsletter">
+      Je souhaite recevoir la newsletter
+    </label>
+    <br>
+
+    <label for="job">Métier :</label>
+    <select name="job" id="job" formControlName="job">
+      <option value="dev">Développeur Web</option>
+      <option value="design">Designer</option>
+    </select>
+    <br>
+
+    <label for="knowledge">Connaissez-vous Angular ?</label>
+    <input id="knowledge" name="knowledge" min="1" max="10" type="range" formControlName="knowledge">
+    <div *ngIf="form.get('knowledge')?.hasError('min')" class="error">Au moins 2</div>
+
+
+    <br>
+    <input type="submit" value="Envoyer">
+  </form>
 </section>
