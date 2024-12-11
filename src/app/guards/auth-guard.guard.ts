@@ -6,10 +6,13 @@ export const authGuardGuard: CanActivateFn = (route, state) => {
 
   const authService = inject(Mod4demo1Service)
   const router = inject(Router)
+
   if (authService.getUser()) {
     return true;
   } else {
-    router.navigate(['/detail', 123], {queryParams : {message : "Mange tes morts"}})
+    router.navigate(['/detail', 123], {queryParams : {message : "Accès interdit !"}})
     return false;
   }
+
+
 };

@@ -15,17 +15,19 @@ export class DetailComponent {
 
   public message: string | null = ''
 
-//paramMap pour les paramètres obligatoires
   constructor(private activatedRoute: ActivatedRoute) {
+
+    //paramMap pour les paramètres obligatoires
     if (this.activatedRoute.snapshot.paramMap.has('id')) {
       let id = this.activatedRoute.snapshot.paramMap.get('id')
       console.log(id)
     }
-
     //queryParamMap pour les paramètres optionnels
     if (this.activatedRoute.snapshot.queryParamMap.has('message')) {
       this.message = this.activatedRoute.snapshot.queryParamMap.get('message')
     }
+
   }
+
 
 }
