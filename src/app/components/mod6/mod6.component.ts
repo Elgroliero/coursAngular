@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 
 @Component({
@@ -7,7 +7,8 @@ import {NgIf} from "@angular/common";
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    FormsModule
   ],
   templateUrl: './mod6.component.html',
   styleUrl: './mod6.component.css'
@@ -15,6 +16,8 @@ import {NgIf} from "@angular/common";
 export class Mod6Component implements OnInit {
 
   public form!: FormGroup
+  public isSubmitted: boolean = false
+  public username : string = ''
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -39,6 +42,7 @@ export class Mod6Component implements OnInit {
   }
 
   onSubmit() {
+    this.isSubmitted = true
 //code exécuté lors de la soumission du formulaire
     if (this.form.valid) {
       //si c'est ok j'envoie à mon service/api
@@ -47,5 +51,10 @@ export class Mod6Component implements OnInit {
       console.log("Formulaire non valide")
 
     }
+  }
+
+  doSomething(event: Event) {
+    console.log((event.target as HTMLInputElement).value);
+    console.log(this.username)
   }
 }
