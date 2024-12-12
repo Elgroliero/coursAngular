@@ -1,0 +1,50 @@
+<h1>Hello</h1>
+<!--<div *ngIf="joke">{{ joke | json }}</div>-->
+
+<br>
+
+@if (joke2) {
+<!--  <div>{{ joke2 | json }}</div>-->
+  <div>
+    <img src="{{joke2.icon_url}}" alt="Chuck !">
+    {{ joke2.value }}
+  </div>
+}
+
+<br>
+
+<div *ngIf="joke3$ | async as joke3">
+  <div>
+    <img src="{{joke3.icon_url}}" alt="Chuck !">
+    {{ joke3.value }}
+  </div>
+</div>
+
+<br>
+
+@if (joke4) {
+  <div>
+    {{ joke4 }}
+  </div>
+}
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
