@@ -1,52 +1,63 @@
-<section>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <label for="email">Adresse Mail:</label>
-    <input id="email" name="email" type="email" formControlName="email"><br>
-    @if (isSubmitted) {
-      <div *ngIf="form.get('email')?.hasError('required')" class="error">Le mail est obligatoire</div>
-      <div *ngIf="form.get('email')?.errors?.['email']" class="error">Le format du mail est incorrect</div>
-    }
-
-    <label for="password">Mot de passe :</label>
-    <input id="password" name="password" type="password" formControlName="password"><br>
-    @if (isSubmitted) {
-      <div *ngIf="form.get('password')?.hasError('required')" class="error">Le mot de passe est obligatoire</div>
-      <div *ngIf="form.get('password')?.errors?.['minlength']" class="error">Le mot de passe doit comporter au moins 6
-        caractères
-      </div>
-    }
+  <label for="email">Adresse Mail :</label>
+  <input id="email" name="email" type="email" formControlName="email"><br>
+  @if (isSubmitted) {
+    <div *ngIf="form.get('email')?.errors?.['required']" class="error">Le mail est obligatoire</div>
+    <div *ngIf="form.get('email')?.errors?.['email']" class="error">Le format du mail est incorrect</div>
+  }
 
 
-    <label for="birthdate">Date de naissance :</label>
-    <input id="birthdate" name="birthdate" type="date" formControlName="birthdate"><br>
-    @if (isSubmitted) {
-      <div *ngIf="form.get('birthdate')?.errors?.['required']" class="error">La date de naissance est obligatoire</div>
-      <div *ngIf="form.get('birthdate')?.hasError('greaterThan')" class="error">Tu te fous de ma gueule ?</div>
-    }
+  <label for="password">Mot de passe :</label>
+  <input id="password" name="password" type="password" formControlName="password"><br>
+  <div *ngIf="form.get('password')?.hasError('required')" class="error">Le mot de passe est obligatoire</div>
+  <div *ngIf="form.get('password')?.hasError('minlength')" class="error">Le mot de passe doit comporter au moins 6
+    caratères
+  </div>
 
-    <label for="newsletter">
-      <input id="newsletter" name="newsletter" type="checkbox" formControlName="newsletter">
-      Je souhaite recevoir la newsletter
-    </label>
-    <br>
 
-    <label for="job">Métier :</label>
-    <select name="job" id="job" formControlName="job">
-      <option value="dev">Développeur Web</option>
-      <option value="design">Designer</option>
-    </select>
-    <br>
+  <label for="birthdate">Date de naissance : </label>
+  <input id="birthdate" name="birthdate" type="date" formControlName="birthdate"><br>
+  <div *ngIf="form.get('birthdate')?.hasError('required')" class="error">Le date est obligatoire</div>
+  <div *ngIf="form.get('birthdate')?.hasError('greaterThan')" class="error">Le date ne peut être dans l'avenir (cf
+    BTF3)
+  </div>
 
-    <label for="knowledge">Connaissez-vous Angular ?</label>
-    <input id="knowledge" name="knowledge" min="1" max="10" type="range" formControlName="knowledge">
-    @if (isSubmitted) {
-      <div *ngIf="form.get('knowledge')?.hasError('min')" class="error">Au moins 2</div>
-    }
-    <br>
-    <input type="submit" value="Envoyer">
-  </form>
+  <label for="newsLetter">
+    <input id="newsLetter" name="newsLetter" type="checkbox" formControlName="newsLetter">
+    Je souhaite m'abonner à la newsletter
+  </label>
+  <br>
+  <label for="job">Métier : </label>
+  <select name="job" id="job" formControlName="job">
+    <option value="dev">Développeur Web</option>
+    <option value="asr">Admin Sys</option>
+  </select>
+  <label for="knowledge">Connaisez-vous Angular ?</label>
+  <input id="knowledge" name="knowledge" min="1" max="10" type="range" formControlName="knowledge"><br>
+  <input type="submit" value="Enregistrer">
+</form>
 
-  <label>Pseudo</label>
-  <input type="text" [(ngModel)]="username" (input)="doSomething($event)">
-</section>
+<label>Pseudo</label>
+<input type="text" [(ngModel)]="username" (input)="doSomething($event)">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
